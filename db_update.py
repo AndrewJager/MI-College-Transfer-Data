@@ -3,7 +3,7 @@
 from project import db
 from project.models import *
 
-user = User.query.first()
+user = db.session.query(User).first()
 user.is_admin = True
 
 db.session.commit()
