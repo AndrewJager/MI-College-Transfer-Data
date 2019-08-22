@@ -16,17 +16,19 @@ localSystem = None
 db = SQLAlchemy(app)
 
 from project.home.views import home_blueprint
+from project.user.views import user_blueprint
 
 app.register_blueprint(home_blueprint)
+app.register_blueprint(user_blueprint)
 
-# from project.models import User
+from project.models import User
 
-# login_manager.login_view = "users.login"
+login_manager.login_view = "users.login"
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     try:
-#         user = User.query.filter(User.id == int(user_id)).first()
-#     except:
-#         user = None
-#     return user
+@login_manager.user_loader
+def load_user(user_id):
+    try:
+        user = User.query.filter(User.id == int(user_id)).first()
+    except:
+        user = None
+    return user
