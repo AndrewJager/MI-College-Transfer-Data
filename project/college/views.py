@@ -20,9 +20,30 @@ def newCollege():
             college = College()
             college.name = form.collegeName.data
             college.college_type = form.collegeType.data 
+            college.college_ownership = form.collegeOwnership.data
 
             db.session.add(college)
             db.session.commit()
             return redirect(url_for('home.home'))
+
+    return render_template('edit_college.html', user=user, form=form)
+
+@college_blueprint.route('/edit_college/<string:id>', methods=['GET', 'POST'])
+@login_required
+def editCollege(id):
+    user = current_user
+    form = CollegeForm(request.form)
+    college = College.query.filter_by(name=id).first()
+    if request.method == 'GET':
+        form.collegeName.data = college.name
+        form.collegeType.data = college.college_type
+        form.collegeOwnership.data = college.college_ownership
+
+    if request.method == 'POST':
+        college.name = form.collegeName.data
+        college.college_type = form.collegeType.data 
+        college.college_ownership = form.collegeOwnership.data
+
+        db.session.commit()
 
     return render_template('edit_college.html', user=user, form=form)

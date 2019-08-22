@@ -26,6 +26,16 @@
           {% endif %}
         </span>
       </p>
+      <p>
+        {{ form.collegeOwnership() }}
+          <span class="error">
+            {% if form.collegeOwnership.errors %}
+              {% for error in form.collegeOwnership.errors %}
+                {{ error }}
+              {% endfor %}
+            {% endif %}
+          </span>
+        </p>
       <button class="btn btn-sm btn-success" type="submit">Enter</button>
     </form>
   </div>
