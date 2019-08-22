@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.isAdmin %}
+
+<div class="row pt-3">
+    <div class="col text-center">
+        <a class="btn btn-primary" href="/new_college" role="button">New college</a>
+    </div>
+    <div class="col text-center">
+        <a class="btn btn-primary" href="/new_data" role="button">New Common Data Set</a>
+    </div>
+</div>
+
+{% else %}
+    <h3>Nothing here</h3>
+{% endif %}
+
+{% endblock %}

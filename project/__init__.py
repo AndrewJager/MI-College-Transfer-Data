@@ -18,10 +18,12 @@ db = SQLAlchemy(app)
 from project.home.views import home_blueprint
 from project.user.views import user_blueprint
 from project.college.views import college_blueprint
+from project.admin.views import admin_blueprint
 
 app.register_blueprint(home_blueprint)
 app.register_blueprint(user_blueprint)
 app.register_blueprint(college_blueprint)
+app.register_blueprint(admin_blueprint)
 
 from project.models import User
 
