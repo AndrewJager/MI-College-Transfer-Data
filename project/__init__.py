@@ -17,13 +17,15 @@ db = SQLAlchemy(app)
 
 from project.home.views import home_blueprint
 from project.user.views import user_blueprint
+from project.college.views import college_blueprint
 
 app.register_blueprint(home_blueprint)
 app.register_blueprint(user_blueprint)
+app.register_blueprint(college_blueprint)
 
 from project.models import User
 
-login_manager.login_view = "users.login"
+login_manager.login_view = "user.login"
 
 @login_manager.user_loader
 def load_user(user_id):

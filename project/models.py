@@ -29,3 +29,13 @@ class User(db.Model):
 
     def get_id(self):
         return str(self.id)
+
+
+class College(db.Model):
+    __tablename__ = "colleges"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    college_type = db.Column(db.String) # 2-year, 4-year, masters, ect
+    college_ownership = db.Column(db.String) # public, private non-profit, private for-profit, ect
+    founded = db.Column(db.Integer)

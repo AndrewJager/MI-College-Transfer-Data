@@ -3,7 +3,7 @@ from flask import flash, redirect, render_template, request, \
 from flask_login import login_user, login_required, logout_user, current_user
 from project.user.form import LoginForm, RegisterForm
 from project.models import User
-from project import db
+from project import db, bcryptObj
 
 user_blueprint = Blueprint(
     'user', __name__,
