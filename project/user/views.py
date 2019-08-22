@@ -36,6 +36,7 @@ def logout():
 
 @user_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
+    return "Registration currently disabled"
     form = RegisterForm()
     if form.validate_on_submit():
         user = User(
