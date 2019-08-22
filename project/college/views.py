@@ -21,6 +21,9 @@ def newCollege():
             college.name = form.collegeName.data
             college.college_type = form.collegeType.data 
             college.college_ownership = form.collegeOwnership.data
+            college.founded = form.founded.data 
+            college.xPosition = form.xPosition.data   
+            college.yPosition = form.yPosition.data
 
             db.session.add(college)
             db.session.commit()
@@ -38,12 +41,19 @@ def editCollege(id):
         form.collegeName.data = college.name
         form.collegeType.data = college.college_type
         form.collegeOwnership.data = college.college_ownership
+        form.founded.data = college.founded
+        form.xPosition.data = college.xPosition
+        form.yPosition.data = college.yPosition
 
     if request.method == 'POST':
         college.name = form.collegeName.data
         college.college_type = form.collegeType.data 
         college.college_ownership = form.collegeOwnership.data
+        college.founded = form.founded.data 
+        college.xPosition = form.xPosition.data   
+        college.yPosition = form.yPosition.data
 
         db.session.commit()
+        return redirect(url_for('home.home'))
 
     return render_template('edit_college.html', user=user, form=form)

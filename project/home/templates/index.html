@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="container fill map">
+
 <h1>Colleges:</h1>
 {% for col in colleges %}
     <h5 class="collegeListing">{{ col.name }}</h5>
@@ -8,6 +10,15 @@
         <a class="btn btn-warning" href="/edit_college/{{ col.name }}" role="button">Edit</a>
     {% endif %}
     <br>
+    {% if col.xPosition != None %}
+    <a href="/edit_college/{{ col.name }}">
+        <svg class="mapCircle">
+            <circle cx="{{ col.xPosition }}" cy="{{ col.yPosition }}" r="15" fill="blue" />
+        </svg>
+    </a>
+    {% endif %}
 {% endfor %}
+
+</div>
 
 {% endblock %}

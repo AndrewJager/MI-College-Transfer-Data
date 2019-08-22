@@ -39,3 +39,19 @@ class College(db.Model):
     college_type = db.Column(db.String) # 2-year, 4-year, masters, ect
     college_ownership = db.Column(db.String) # public, private non-profit, private for-profit, ect
     founded = db.Column(db.Integer)
+    xPosition = db.Column(db.Integer)
+    yPosition = db.Column(db.Integer)
+
+    def getMapColor(self):
+        if self.college_type == 'N/A':
+            color = 'grey'
+        if self.college_type == "Associate's college":
+            color = "red"
+        if self.college_type == "Baccalaureate college":
+            color = 'green'
+        if self.college_type == "Master's university":
+            color = 'red'
+        if self.college_type == "Research university":
+            color = 'black' 
+        if self.college_type == "Special-focus institution":
+            color = 'silver' 

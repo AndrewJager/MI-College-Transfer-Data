@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<div class="container">
 <div class="row">
   <div class="col">
     <form class="form-newCollege" role="form" method="post" action="">
@@ -15,6 +16,7 @@
             {% endfor %}
           {% endif %}
         </span>
+        <span>College name</span>
       </p>
       <p>
       {{ form.collegeType() }}
@@ -25,20 +27,56 @@
             {% endfor %}
           {% endif %}
         </span>
+        <span>Type of college</span>
       </p>
       <p>
-        {{ form.collegeOwnership() }}
-          <span class="error">
-            {% if form.collegeOwnership.errors %}
-              {% for error in form.collegeOwnership.errors %}
-                {{ error }}
-              {% endfor %}
-            {% endif %}
-          </span>
-        </p>
+      {{ form.collegeOwnership() }}
+        <span class="error">
+          {% if form.collegeOwnership.errors %}
+            {% for error in form.collegeOwnership.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+        <span>College ownership</span>
+      </p>
+      <p>
+      {{ form.founded() }}
+        <span class="error">
+          {% if form.founded.errors %}
+            {% for error in form.founded.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+        <span>Year founded</span>
+      </p>
+      <p>
+      {{ form.xPosition() }}
+        <span class="error">
+          {% if form.xPosition.errors %}
+            {% for error in form.xPosition.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+        <span>X position on map</span>
+      </p>
+      <p>
+      {{ form.yPosition() }}
+        <span class="error">
+          {% if form.yPosition.errors %}
+            {% for error in form.yPosition.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+        <span>Y position on map</span>
+      </p>
       <button class="btn btn-sm btn-success" type="submit">Enter</button>
     </form>
   </div>
+</div>
 </div>
 
 {% endblock %}
