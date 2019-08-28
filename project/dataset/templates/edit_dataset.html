@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+  <div class="col">
+    <form class="form-newCollege" role="form" method="post" action="">
+      {{ form.csrf_token }}
+      <p>
+        {{ form.college() }}
+        <span class="error">
+          {% if form.college.error %}
+            {% for error in form.college.error %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+        <span>College</span>
+      </p>
+      <p>
+      {{ form.year() }}
+        <span class="error">
+          {% if form.year.errors %}
+            {% for error in form.year.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+        <span></span>
+      </p>
+      <p>
+      {{ form.acceptTransfers() }}
+        <span class="error">
+          {% if form.acceptTransfers.errors %}
+            {% for error in form.acceptTransfers.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endif %}
+        </span>
+        <span>Accept transfers</span>
+      </p>
+      <button class="btn btn-sm btn-success" type="submit">Enter</button>
+    </form>
+  </div>
+</div>
+</div>
+
+{% endblock %}

@@ -41,6 +41,7 @@ class College(db.Model):
     founded = db.Column(db.Integer)
     xPosition = db.Column(db.Integer)
     yPosition = db.Column(db.Integer)
+    datasets = relationship("Dataset")
 
     def getMapColor(self):
         if self.college_type == 'N/A':
@@ -55,3 +56,12 @@ class College(db.Model):
             color = 'black' 
         if self.college_type == "Special-focus institution":
             color = 'silver' 
+
+
+class Dataset(db.Model):
+    __tablename__ = "datasets"
+
+    id = db.Column(db.Integer, primary_key=True)
+    college_id = db.Column(db.Integer, ForeignKey('colleges.id'))
+    year = db.Column(db.String)
+    accept_transfer = db.Column(db.Boolean)
