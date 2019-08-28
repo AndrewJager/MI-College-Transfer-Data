@@ -10,4 +10,8 @@ class DatasetForm(FlaskForm):
     year = SelectField('year', 
         choices=[(year, year) for year in datasetYears], validators=[DataRequired()])
     college = QuerySelectField(query_factory=lambda: College.query.all(), get_label='name')
+
     acceptTransfers = BooleanField('acceptTransfers')
+    applied = IntegerField('applied')
+    admitted = IntegerField('admitted')
+    enrolled = IntegerField('enrolled')

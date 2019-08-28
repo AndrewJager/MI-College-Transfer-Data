@@ -46,15 +46,16 @@ def editCollege(id):
         form.yPosition.data = college.yPosition
 
     if request.method == 'POST':
-        college.name = form.collegeName.data
-        college.college_type = form.collegeType.data 
-        college.college_ownership = form.collegeOwnership.data
-        college.founded = form.founded.data 
-        college.xPosition = form.xPosition.data   
-        college.yPosition = form.yPosition.data
+        if form.validate_on_submit():
+            college.name = form.collegeName.data
+            college.college_type = form.collegeType.data 
+            college.college_ownership = form.collegeOwnership.data
+            college.founded = form.founded.data 
+            college.xPosition = form.xPosition.data   
+            college.yPosition = form.yPosition.data
 
-        db.session.commit()
-        return redirect(url_for('home.home'))
+            db.session.commit()
+            return redirect(url_for('home.home'))
 
     return render_template('edit_college.html', user=user, form=form)
 

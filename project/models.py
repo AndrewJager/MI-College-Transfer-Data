@@ -65,3 +65,7 @@ class Dataset(db.Model):
     college_id = db.Column(db.Integer, ForeignKey('colleges.id'))
     year = db.Column(db.String)
     accept_transfer = db.Column(db.Boolean)
+    transfer_applicants = db.Column(db.Integer)
+    transfer_admitted = db.Column(db.Integer)
+    transfer_enrolled = db.Column(db.Integer)
+    

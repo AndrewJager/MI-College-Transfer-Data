@@ -7,7 +7,11 @@
         <h1>{{ college.name }}</h1>
 
         {% for data in college.datasets %}
-            <a href='/data/{{ data.id }}'>{{ data.year }}</a><br>
+            <a href='/data/{{ data.id }}'>{{ data.year }}</a>
+            {% if user.isAdmin %}
+                <a class="btn btn-warning" href="/edit_dataset/{{ data.id }}" role="button">Edit</a>
+            {% endif %}
+            <br>
         {% endfor %}
     </div>
 </div>
