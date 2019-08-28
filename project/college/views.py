@@ -57,3 +57,9 @@ def editCollege(id):
         return redirect(url_for('home.home'))
 
     return render_template('edit_college.html', user=user, form=form)
+
+@college_blueprint.route('/college/<string:id>')
+def viewCollege(id):
+    user = current_user
+    college = College.query.filter_by(name=id).first()
+    return render_template('view_college.html', user=user, college=college)

@@ -4,7 +4,7 @@
 
 <h1>Colleges:</h1>
 {% for col in colleges %}
-    <h5 class="collegeListing">{{ col.name }}</h5>
+    <h5 class="collegeListing"><a href="/college/{{ col.name }}"> {{ col.name }} </a></h5>
     {% if user.isAdmin %}
         <a class="btn btn-warning" href="/edit_college/{{ col.name }}" role="button">Edit</a>
     {% endif %}
