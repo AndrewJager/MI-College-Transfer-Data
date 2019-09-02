@@ -17,38 +17,5 @@
     </a>
     {% endif %} -->
 {% endfor %}
-<div style="position: relative;">
-<canvas class="mapCanvas" style="position: absolute">
-    <p>The map is not able to be displayed here</p>
-</canvas>
-<canvas class="circleCanvas" style="position: absolute">
-</canvas>
-</div>
-6
-
-<script>
-    var canvas = document.querySelector('.mapCanvas');
-    var canvasCircles = document.querySelector('.circleCanvas');
-    var width = canvas.width = canvasCircles.width = window.innerWidth;
-    var height = canvas.height = canvasCircles.height = window.innerHeight;
-    var ctx = canvas.getContext('2d');
-    var ctxC = canvasCircles.getContext('2d');
-
-    var radius = 5;
-    {% for col in colleges %}
-        ctxC.beginPath()
-        ctxC.arc({{ col.xPosition }}, {{ col.yPosition }}, radius, 0, 2 * Math.PI, false);
-        ctxC.fillStyle = 'green';
-        ctxC.fill();
-        ctxC.strokeStyle = 'green';
-        ctxC.stroke();
-    {% endfor %}
-
-    var image = new Image();
-    image.src = '/static/images/USMap.svg';
-    image.onload = function() {
-        ctx.drawImage(image, 500, 85, image.width/3, image.height/3, 0, 0, width, height);
-    }
-</script>
 
 {% endblock %}

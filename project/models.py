@@ -57,6 +57,8 @@ class College(db.Model):
         if self.college_type == "Special-focus institution":
             color = 'silver' 
 
+        return color
+
 
 class Dataset(db.Model):
     __tablename__ = "datasets"
