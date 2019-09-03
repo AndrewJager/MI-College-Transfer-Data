@@ -24,6 +24,8 @@ def newCollege():
             college.founded = form.founded.data 
             college.xPosition = form.xPosition.data   
             college.yPosition = form.yPosition.data
+            college.website = form.collegeWebsite.data   
+            college.transfer_website = form.transferWebpage.data
 
             db.session.add(college)
             db.session.commit()
@@ -44,6 +46,8 @@ def editCollege(id):
         form.founded.data = college.founded
         form.xPosition.data = college.xPosition
         form.yPosition.data = college.yPosition
+        form.collegeWebsite.data = college.website 
+        form.transferWebpage.data = college.transfer_website
 
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -53,6 +57,8 @@ def editCollege(id):
             college.founded = form.founded.data 
             college.xPosition = form.xPosition.data   
             college.yPosition = form.yPosition.data
+            college.website = form.collegeWebsite.data   
+            college.transfer_website = form.transferWebpage.data
 
             db.session.commit()
             return redirect(url_for('home.home'))

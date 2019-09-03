@@ -9,7 +9,7 @@
         {% block head %}{% endblock %}
     </head>
     <body>
-        <div class="row text-center"> 
+        <div class="row text-center pt-1"> 
             <div class="col">
                 <a href="/" class="btn btn-secondary">Home</a>
             </div>
@@ -28,10 +28,6 @@
                 </div>
             {% endif %}
         </div>
-        <div class="row">
-            <div class="col ml-3 mr-3">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
+        {% block content %}{% endblock %}
     </body>
 </html>

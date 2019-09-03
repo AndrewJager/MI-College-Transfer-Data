@@ -41,6 +41,9 @@ class College(db.Model):
     founded = db.Column(db.Integer)
     xPosition = db.Column(db.Integer)
     yPosition = db.Column(db.Integer)
+    website = db.Column(db.String)
+    transfer_website = db.Column(db.String)
+
     datasets = relationship("Dataset")
 
     def getMapColor(self):
@@ -70,4 +73,5 @@ class Dataset(db.Model):
     transfer_applicants = db.Column(db.Integer)
     transfer_admitted = db.Column(db.Integer)
     transfer_enrolled = db.Column(db.Integer)
+    reference = db.Column(db.String)
     

@@ -1,5 +1,5 @@
 from flask_wtf import Form 
-from wtforms import TextField, SelectField, IntegerField
+from wtforms import TextField, SelectField, IntegerField, StringField
 from wtforms.validators import DataRequired
 
 from constants import collegeTypes, collegeOwnerships
@@ -13,4 +13,6 @@ class CollegeForm(Form):
     founded = IntegerField('founded')
     xPosition = IntegerField('xPosition')
     yPosition = IntegerField('yPosition')
+    collegeWebsite = StringField('collegeWebsite')
+    transferWebpage = StringField('transferWebpage')
 

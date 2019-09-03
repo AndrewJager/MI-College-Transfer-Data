@@ -1,4 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="container">
+<div class="row">
+    <div class="col text-center">
+        <h2>{{ col.name }} common data set {{ dataset.year }}</h2>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col d-inline-flex">
+        <H5>Reference: &nbsp;</H5><a href="{{ dataset.reference }}">{{ dataset.reference }}</a>
+    </div>
+</div>
+<hr>
+<div class="row ">
+    <div class="col-4 d-inline-flex">
+        <h5>Transfer applicants: &nbsp;</h5> {{ dataset.transfer_applicants }}
+    </div>
+    <div class="col-4 d-inline-flex">
+        <h5>Accepted: &nbsp;</h5> {{ dataset.transfer_admitted }}
+    </div>
+    <div class="col-4 d-inline-flex">
+        <h5>Enrolled: &nbsp;</h5> {{ dataset.transfer_enrolled }}
+    </div>
+</div>
+</div>
 {% endblock %}

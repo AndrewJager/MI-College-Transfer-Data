@@ -25,6 +25,7 @@ def newDataset():
             dataset.transfer_applicants = form.applied.data
             dataset.transfer_admitted = form.admitted.data
             dataset.transfer_enrolled = form.enrolled.data
+            dataset.reference = form.reference.data
 
             db.session.add(dataset)
             db.session.commit()
@@ -48,6 +49,7 @@ def editDataset(id):
         form.applied.data = dataset.transfer_applicants
         form.admitted.data = dataset.transfer_admitted
         form.enrolled.data = dataset.transfer_enrolled
+        form.reference.data = dataset.reference
 
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -57,6 +59,7 @@ def editDataset(id):
             dataset.transfer_applicants = form.applied.data
             dataset.transfer_admitted = form.admitted.data
             dataset.transfer_enrolled = form.enrolled.data
+            dataset.reference = form.reference.data
 
             db.session.commit()
             return redirect(url_for('home.home'))
@@ -64,3 +67,10 @@ def editDataset(id):
             print(form.errors)
 
     return render_template('edit_dataset.html', user=user, form=form)
+
+@dataset_blueprint.route('/data/<string:id>')
+def viewDataset(id):
+    user = current_user
+    dataset = Dataset.query.filter_by(id=id).first()
+    college = College.query.filter_by(id=dataset.college_id).first()
+    return render_template('view_dataset.html', user=user, dataset=dataset, col=college)

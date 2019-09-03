@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm 
-from wtforms import TextField, SelectField, IntegerField, BooleanField
+from wtforms import TextField, SelectField, IntegerField, BooleanField, StringField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired
 
@@ -12,6 +12,7 @@ class DatasetForm(FlaskForm):
     college = QuerySelectField(query_factory=lambda: College.query.all(), get_label='name')
 
     acceptTransfers = BooleanField('acceptTransfers')
-    applied = IntegerField('applied')
-    admitted = IntegerField('admitted')
-    enrolled = IntegerField('enrolled')
+    applied = IntegerField('applied', validators=[DataRequired()])
+    admitted = IntegerField('admitted', validators=[DataRequired()])
+    enrolled = IntegerField('enrolled', validators=[DataRequired()])
+    reference = StringField('reference', validators=[DataRequired()])

@@ -73,7 +73,15 @@
                     </span>
                     </span>Transfer students enrolled</span>
                 </p>
-
+                <p>
+                    {{ form.reference() }}
+                    <span class="error">
+                        {% if form.reference.errors %}
+                        {% for error in form.reference.errors %}
+                        {{ error }}
+                        {% endfor %}
+                        {% endif %}
+                </p>
                 <button class="btn btn-sm btn-success" type="submit">Enter</button>
             </form>
         </div>

@@ -73,6 +73,28 @@
         </span>
         <span>Y position on map</span>
       </p>
+      <p>
+        {{ form.collegeWebsite() }}
+          <span class="error">
+            {% if form.collegeWebsite.errors %}
+              {% for error in form.collegeWebsite.errors %}
+                {{ error }}
+              {% endfor %}
+            {% endif %}
+          </span>
+          <span>College website</span>
+        </p>
+      <p>
+        {{ form.transferWebpage }}
+          <span class="error">
+            {% if form.transferWebpage.errors %}
+              {% for error in form.transferWebpage.errors %}
+                {{ error }}
+              {% endfor %}
+            {% endif %}
+          </span>
+          <span>Transfer information webpage</span>
+        </p>
       <button class="btn btn-sm btn-success" type="submit">Enter</button>
     </form>
   </div>

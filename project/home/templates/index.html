@@ -1,21 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="row">
+    <div class="col text-center pt-3">
+        <h1>Michigan college transfer data</h1>
+    </div>
+</div>
 
-<h1>Colleges:</h1>
-{% for col in colleges %}
-    <h5 class="collegeListing"><a href="/college/{{ col.name }}"> {{ col.name }} </a></h5>
-    {% if user.isAdmin %}
-        <a class="btn btn-warning" href="/edit_college/{{ col.name }}" role="button">Edit</a>
-    {% endif %}
-    <br>
-    <!-- {% if col.xPosition != None %}
-    <a href="/edit_college/{{ col.name }}">
-        <svg class="mapCircle">
-            <circle cx="{{ col.xPosition }}" cy="{{ col.yPosition }}" r="15" fill="blue" />
-        </svg>
-    </a>
-    {% endif %} -->
-{% endfor %}
+<div class="row">
+    <div class="col-4 ml-3">
+        <h3>Colleges:</h3>
+        <ul>
+        {% for col in colleges %}
+            <li>
+            <h5 class="collegeListing"><a href="/college/{{ col.name }}"> {{ col.name }} </a></h5>
+            {% if user.isAdmin %}
+                <a class="btn btn-warning" href="/edit_college/{{ col.name }}" role="button">Edit</a>
+            {% endif %}
+            </li>
+            <br>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="col-8">
+
+    </div>
+</div>
 
 {% endblock %}
