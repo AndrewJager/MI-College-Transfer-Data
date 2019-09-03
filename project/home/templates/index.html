@@ -1,18 +1,31 @@
 {% extends "base.html" %}
 {% block head %}
-<script type="text/paperscript" canvas="myCanvas"> 
+<script type="text/paperscript" canvas="myCanvas">
+    var clickDistance = 10;
+    var xOffset = 0;
+    var yOffset = 0;
     var map = new Raster('map');
-
+    
     map.position = view.center;
     map.position.x -= 630;
     map.position.y += 570;
     map.scale(4);
-
+    
+    var location = new PointText(new Point(10, 10));
+    location.content = 'X: Y:';
+    var xLoc = '';
+    var yLoc = '';
+    var collegeText = new PointText(new Point(100, 10));
+    collegeText.content = 'none';
+    
     var circles = []
+    var collegeLocs = []
     {% for col in colleges %}
         myCircle = new Path.Circle(new Point({{ col.xPosition }}, {{ col.yPosition }}), 10);
         myCircle.fillColor = '{{ col.getMapColor() }}';
         circles.push(myCircle);
+        var newOffset = {x:{{ col.xPosition }}, y:{{ col.yPosition }}};
+        collegeLocs.push(newOffset);
     {% endfor %}
 
     function onMouseDrag(event) {
@@ -20,6 +33,42 @@
         map.position.y += event.delta.y;
         for (i = 0; i < circles.length; i++){
             circles[i].position += event.delta;
+            collegeLocs[i].x += event.delta.x;
+            collegeLocs[i].y += event.delta.y;
+        }
+        xOffset += event.delta.x;
+        yOffset += event.delta.y;
+    }
+    
+    function onMouseMove(event)
+    {
+        xLoc = Math.round(event.point.x - xOffset);
+        yLoc = Math.round(event.point.y - yOffset);
+        location.content = 'X: ' + xLoc + ' Y: ' + yLoc;
+    }
+    
+    function onMouseDown(event)
+    {
+        var x = event.point.x;
+        var y = event.point.y;
+        var foundCollege = false;
+        for (i = 0; i < circles.length; i++)
+        {
+            {% for col in colleges %}
+                var j = {{ loop.index0 }};
+                if ((x > (collegeLocs[j].x - clickDistance)) && (x < (collegeLocs[j].x + clickDistance)))
+                {
+                    if ((y > (collegeLocs[j].y - clickDistance)) && (y < (collegeLocs[j].y + clickDistance)))
+                    {
+                        collegeText.content = '{{ col.name }}';
+                        foundCollege = true;
+                    }
+                }
+            {% endfor %}
+        }
+        if (!foundCollege)
+        {
+            collegeText.content = 'none';
         }
     }
 </script>
@@ -52,5 +101,6 @@
         <canvas id="myCanvas" resize></canvas> 
     </div>
 </div>
+<footer class="footer">Test</footer>
 
 {% endblock %}
