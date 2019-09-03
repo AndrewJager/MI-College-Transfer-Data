@@ -50,7 +50,7 @@ class College(db.Model):
         if self.college_type == 'N/A':
             color = 'grey'
         if self.college_type == "Associate's college":
-            color = "red"
+            color = "blue"
         if self.college_type == "Baccalaureate college":
             color = 'green'
         if self.college_type == "Master's university":

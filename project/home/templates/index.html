@@ -1,4 +1,30 @@
 {% extends "base.html" %}
+{% block head %}
+<script type="text/paperscript" canvas="myCanvas"> 
+    var map = new Raster('map');
+
+    map.position = view.center;
+    map.position.x -= 630;
+    map.position.y += 570;
+    map.scale(4);
+
+    var circles = []
+    {% for col in colleges %}
+        myCircle = new Path.Circle(new Point({{ col.xPosition }}, {{ col.yPosition }}), 10);
+        myCircle.fillColor = '{{ col.getMapColor() }}';
+        circles.push(myCircle);
+    {% endfor %}
+
+    function onMouseDrag(event) {
+        map.position.x += event.delta.x;
+        map.position.y += event.delta.y;
+        for (i = 0; i < circles.length; i++){
+            circles[i].position += event.delta;
+        }
+    }
+</script>
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
@@ -6,9 +32,8 @@
         <h1>Michigan college transfer data</h1>
     </div>
 </div>
-
 <div class="row">
-    <div class="col-4 ml-3">
+    <div class="col-4">
         <h3>Colleges:</h3>
         <ul>
         {% for col in colleges %}
@@ -23,7 +48,8 @@
         </ul>
     </div>
     <div class="col-8">
-
+        <img src="/static/images/USMap.svg" id="map" style="display: none;">
+        <canvas id="myCanvas" resize></canvas> 
     </div>
 </div>
 
