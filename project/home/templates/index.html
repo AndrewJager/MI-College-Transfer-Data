@@ -79,6 +79,16 @@
             document.getElementById("colLink").text = collegeText.content;
         }
     }
+
+    function onTouchStart(event)
+    {
+        onMouseDown(event);
+    }
+
+    function onTouchMove(event)
+    {
+        onMouseDrag(event);
+    }
 </script>
 {% endblock %}
 
@@ -91,7 +101,7 @@
 </div>
 <div class="row text-center m-3"> 
     <div class="col">
-        <a href="#" id="colLink" style="display: none">This college</a>
+        <a href="#" class="btn btn-secondary" id="colLink" style="display: none">This college</a>
     </div>
 </div>
 <div class="row">
@@ -100,7 +110,7 @@
         <ul>
         {% for col in colleges %}
             <li>
-            <h5 class="collegeListing"><a href="/college/{{ col.name }}"> {{ col.name }} </a></h5>
+            <h5 class="collegeListing"><a href="/college/{{ col.name }}" class="btn btn-secondary"> {{ col.name }} </a></h5>
             {% if user.isAdmin %}
                 <a class="btn btn-warning" href="/edit_college/{{ col.name }}" role="button">Edit</a>
             {% endif %}
