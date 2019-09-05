@@ -2,6 +2,8 @@
 {% block head %}
 <script type="text/paperscript" canvas="myCanvas">
     var clickDistance = 10;
+    var baseClickDistance = 10;
+    var touchDistance = 20;
     var xOffset = 0;
     var yOffset = 0;
     var map = new Raster('map');
@@ -82,12 +84,15 @@
 
     function onTouchStart(event)
     {
+        clickDistance = touchDistance;
         onMouseDown(event);
+        clickDistance = baseClickDistance;
     }
 
     function onTouchMove(event)
     {
         onMouseDrag(event);
+        onMouseMove(event);
     }
 </script>
 {% endblock %}
