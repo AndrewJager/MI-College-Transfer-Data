@@ -8,9 +8,8 @@
     var yOffset = 0;
     var map = new Raster('map');
     
-    map.position = view.center;
-    map.position.x -= 630;
-    map.position.y += 570;
+    map.position.x -= 10;
+    map.position.y += 870;
     map.scale(4);
     
     var location = new PointText(new Point(10, 10));
@@ -110,6 +109,12 @@
     </div>
 </div>
 <div class="row">
+    <div class="col">
+        <img src="/static/images/USMap.svg" id="map" style="display: none;">
+        <canvas id="myCanvas" resize></canvas> 
+    </div>
+</div>
+<div class="row">
     <div class="col-4">
         <h3>Colleges:</h3>
         <ul>
@@ -123,10 +128,6 @@
             <br>
         {% endfor %}
         </ul>
-    </div>
-    <div class="col-8">
-        <img src="/static/images/USMap.svg" id="map" style="display: none;">
-        <canvas id="myCanvas" resize></canvas> 
     </div>
 </div>
 <footer class="footer">Test</footer>
