@@ -72,12 +72,16 @@
             collegeText.content = 'none';
             document.getElementById("colLink").href="#";
             document.getElementById("colLink").style.display = 'none';
+            document.getElementById("colEditLink").href="#";
+            document.getElementById("colEditLink").style.display = 'none';
         }
         else
         {
             document.getElementById("colLink").style.display = 'block';
             document.getElementById("colLink").href="/college/" + collegeText.content; 
             document.getElementById("colLink").text = collegeText.content;
+            document.getElementById("colEditLink").style.display = 'block';
+            document.getElementById("colEditLink").href="/edit_college/" + collegeText.content; 
         }
     }
 
@@ -105,13 +109,14 @@
 </div>
 <div class="row text-center m-3"> 
     <div class="col">
-        <a href="#" class="btn btn-secondary" id="colLink" style="display: none">This college</a>
+        <a href="#" class="btn btn-secondary" id="colLink" style="display: none"></a>
+        <a href="#" class="btn btn-warning" id="colEditLink" style="display: none">Edit</a>
     </div>
 </div>
 <div class="row">
     <div class="col">
         <img src="/static/images/USMap.svg" id="map" style="display: none;">
-        <canvas id="myCanvas" resize></canvas> 
+        <canvas id="myCanvas"></canvas> 
     </div>
 </div>
 <div class="row">
