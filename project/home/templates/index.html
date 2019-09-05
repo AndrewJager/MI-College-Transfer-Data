@@ -69,6 +69,14 @@
         if (!foundCollege)
         {
             collegeText.content = 'none';
+            document.getElementById("colLink").href="#";
+            document.getElementById("colLink").style.display = 'none';
+        }
+        else
+        {
+            document.getElementById("colLink").style.display = 'block';
+            document.getElementById("colLink").href="/college/" + collegeText.content; 
+            document.getElementById("colLink").text = collegeText.content;
         }
     }
 </script>
@@ -79,6 +87,11 @@
 <div class="row">
     <div class="col text-center pt-3">
         <h1>Michigan college transfer data</h1>
+    </div>
+</div>
+<div class="row text-center m-3"> 
+    <div class="col">
+        <a href="#" id="colLink" style="display: none">This college</a>
     </div>
 </div>
 <div class="row">
