@@ -29,6 +29,10 @@
         collegeLocs.push(newOffset);
     {% endfor %}
 
+    canvas = document.getElementById('myCanvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight * 0.8;
+
     function onMouseDrag(event) {
         map.position.x += event.delta.x;
         map.position.y += event.delta.y;
@@ -77,10 +81,10 @@
         }
         else
         {
-            document.getElementById("colLink").style.display = 'block';
+            document.getElementById("colLink").style.display = 'inline';
             document.getElementById("colLink").href="/college/" + collegeText.content; 
             document.getElementById("colLink").text = collegeText.content;
-            document.getElementById("colEditLink").style.display = 'block';
+            document.getElementById("colEditLink").style.display = 'inline';
             document.getElementById("colEditLink").href="/edit_college/" + collegeText.content; 
         }
     }
@@ -109,9 +113,13 @@
 </div>
 <div class="row text-center m-3"> 
     <div class="col">
-        <a href="#" class="btn btn-secondary" id="colLink" style="display: none"></a>
-        <a href="#" class="btn btn-warning" id="colEditLink" style="display: none">Edit</a>
+        <a href="#" class="btn btn-secondary" id="colLink" style="display:none"></a>
     </div>
+    {% if user.isAdmin %}
+    <div class="col">
+        <a href="#" class="btn btn-warning" id="colEditLink" style="display:none">Edit</a>
+    </div>
+    {% endif %}
 </div>
 <div class="row">
     <div class="col">
