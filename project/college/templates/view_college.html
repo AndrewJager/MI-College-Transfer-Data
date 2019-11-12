@@ -3,16 +3,52 @@
 {% block content %}
 
 <div class="row">
-    <div class="col">
+    <div class="col text-center">
         <h1>{{ college.name }}</h1>
+        {% if user.isAdmin %}
+        <a class="btn btn-warning" href="/edit_college/{{ college.name }}" role="button">Edit college</a>
+        {% endif %}
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-sm-8 ml-5">
+        <div class="row">
+            <div class="col d-inline-flex">
+                <h5>College webpage: &nbsp;</h5><a href="{{ college.website }}"
+                    target="_blank">{{ college.website }}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-inline-flex">
+                <h5>Transfer info: &nbsp;</h5><a href="{{ college.transfer_website }}"
+                    target="_blank">{{ college.transfer_website }}</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-inline-flex">
+                <h5>College type: &nbsp;</h5>{{ college.college_type }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-inline-flex">
+                <h5>Ownership: &nbsp;</h5>{{ college.college_ownership }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-inline-flex">
+                <h5>Year founded: &nbsp;</h5>{{ college.founded }}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2">
         <h3>Datasets:</h3>
-        {% for data in college.datasets %}
-            <a href='/data/{{ data.id }}'>{{ data.year }}</a>
-            {% if user.isAdmin %}
-                <a class="btn btn-warning" href="/edit_dataset/{{ data.id }}" role="button">Edit</a>
-            {% endif %}
-            <br>
+        {% for data in college.datasets|sort(attribute='year', reverse = True) %}
+        <a href='/data/{{ data.id }}'>{{ data.year }}</a>
+        {% if user.isAdmin %}
+        <a class="btn btn-warning" href="/edit_dataset/{{ data.id }}" role="button">Edit</a>
+        {% endif %}
+        <br>
         {% endfor %}
     </div>
 </div>

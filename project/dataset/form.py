@@ -5,11 +5,12 @@ from wtforms.validators import DataRequired
 
 from constants import datasetYears
 from project.models import College
+from project import db
 
 class DatasetForm(FlaskForm):
     year = SelectField('year', 
         choices=[(year, year) for year in datasetYears], validators=[DataRequired()])
-    college = QuerySelectField(query_factory=lambda: College.query.all(), get_label='name')
+    college = QuerySelectField(query_factory=lambda: db.session.query(College).order_by(College.name), get_label='name')
 
     acceptTransfers = BooleanField('acceptTransfers')
     applied = IntegerField('applied', validators=[DataRequired()])
