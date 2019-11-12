@@ -74,4 +74,8 @@ class Dataset(db.Model):
     transfer_admitted = db.Column(db.Integer)
     transfer_enrolled = db.Column(db.Integer)
     reference = db.Column(db.String)
+    total_enrollment = db.Column(db.Integer)
+    min_transfer_grade = db.Column(db.String)
+    max_credits_2yr = db.Column(db.Integer)
+    max_credits_4yr = db.Column(db.Integer)
     

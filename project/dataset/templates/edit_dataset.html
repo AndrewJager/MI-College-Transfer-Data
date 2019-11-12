@@ -38,7 +38,7 @@
                         {% endfor %}
                         {% endif %}
                     </span>
-                    <span>Accept transfers</span>
+                    <span>Accept transfers <i>- D1</i></span>
                 </p>
                 <p>
                     {{form.applied() }}
@@ -49,7 +49,7 @@
                         {% endfor %}
                         {% endif %}
                     </span>
-                    </span>Transfer applicants</span>
+                    </span>Transfer applicants <i>- D2</i></span>
                 </p>
                 <p>
                     {{form.admitted() }}
@@ -60,7 +60,7 @@
                         {% endfor %}
                         {% endif %}
                     </span>
-                    </span>Transfer students admitted</span>
+                    </span>Transfer students admitted <i>- D2</i></span>
                 </p>
                 <p>
                     {{form.enrolled() }}
@@ -71,7 +71,7 @@
                         {% endfor %}
                         {% endif %}
                     </span>
-                    </span>Transfer students enrolled</span>
+                    </span>Transfer students enrolled <i>- D2</i></span>
                 </p>
                 <p>
                     {{ form.reference() }}
@@ -83,6 +83,50 @@
                         {% endif %}
                     </span>
                     <span>Link to dataset</span>
+                </p>
+                <p>
+                    {{ form.totalEnrollment() }}
+                    <span class="error">
+                        {% if form.totalEnrollment.errors %}
+                        {% for error in form.totalEnrollment.errors %}
+                        {{ error }}
+                        {% endfor %}
+                        {% endif %}
+                    </span>
+                    <span>Total student enrollment <i>- B1 Grand total</i></span>
+                </p>
+                <p>
+                    {{ form.minTransferGrade() }}
+                    <span class="error">
+                        {% if form.minTransferGrade.errors %}
+                        {% for error in form.minTransferGrade.errors %}
+                        {{ error }}
+                        {% endfor %}
+                        {% endif %}
+                    </span>
+                    <span>Minimum grade for credits to transfer <i>- D12</i></span>
+                </p>
+                <p>
+                    {{ form.maxCredits2Yr() }}
+                    <span class="error">
+                        {% if form.maxCredits2Yr.errors %}
+                        {% for error in form.maxCredits2Yr.errors %}
+                        {{ error }}
+                        {% endfor %}
+                        {% endif %}
+                    </span>
+                    <span>Maximum number of credits that can be transfered from a 2-year college <i>- D13</i></span>
+                </p>
+                <p>
+                    {{ form.maxCredits4Yr() }}
+                    <span class="error">
+                        {% if form.maxCredits4Yr.errors %}
+                        {% for error in form.maxCredits4Yr.errors %}
+                        {{ error }}
+                        {% endfor %}
+                        {% endif %}
+                    </span>
+                    <span>Maximum number of credits that can be transferd from a 4-year college  <i>- D14</i></span>
                 </p>
                 <button class="btn btn-sm btn-success" type="submit">Enter</button>
             </form>

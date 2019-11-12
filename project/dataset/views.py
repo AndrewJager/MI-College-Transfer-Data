@@ -50,6 +50,10 @@ def editDataset(id):
         form.admitted.data = dataset.transfer_admitted
         form.enrolled.data = dataset.transfer_enrolled
         form.reference.data = dataset.reference
+        form.totalEnrollment.data = dataset.total_enrollment
+        form.minTransferGrade.data = dataset.min_transfer_grade
+        form.maxCredits2Yr.data = dataset.max_credits_2yr
+        form.maxCredits4Yr.data = dataset.max_credits_4yr
 
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -60,6 +64,10 @@ def editDataset(id):
             dataset.transfer_admitted = form.admitted.data
             dataset.transfer_enrolled = form.enrolled.data
             dataset.reference = form.reference.data
+            dataset.total_enrollment = form.totalEnrollment.data
+            dataset.min_transfer_grade = form.minTransferGrade.data
+            dataset.max_credits_2yr = form.maxCredits2Yr.data
+            dataset.max_credits_4yr = form.maxCredits4Yr.data
 
             db.session.commit()
             return redirect(url_for('home.home'))

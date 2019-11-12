@@ -6,6 +6,7 @@
     <div class="col">
         <h1>{{ college.name }}</h1>
 
+        <h3>Datasets:</h3>
         {% for data in college.datasets %}
             <a href='/data/{{ data.id }}'>{{ data.year }}</a>
             {% if user.isAdmin %}

@@ -16,3 +16,7 @@ class DatasetForm(FlaskForm):
     admitted = IntegerField('admitted', validators=[DataRequired()])
     enrolled = IntegerField('enrolled', validators=[DataRequired()])
     reference = StringField('reference', validators=[DataRequired()])
+    totalEnrollment = IntegerField('totalEnrollment', validators=[DataRequired()])
+    minTransferGrade = StringField('minTransferGrade', validators=[DataRequired()])
+    maxCredits2Yr = IntegerField('maxCredits2Yr', validators=[DataRequired()])
+    maxCredits4Yr = IntegerField('maxCredits4Yr', validators=[DataRequired()])
